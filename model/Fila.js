@@ -96,6 +96,7 @@ class Fila {
 
         return resultado;
     }
+    
     [Symbol.iterator]() {
         let count = 0;
         let i = this.#inicio;
