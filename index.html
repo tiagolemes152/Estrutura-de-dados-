@@ -9,50 +9,74 @@
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   <link rel="stylesheet" href="estilo/style.css" />
-  <script src="model/Fila.js"></script>
-  <script src="model/Atendimento.js"></script>
-  <script src="utils/util.js"></script>
-  <script src="controller/filaController.js"></script>
-
-
-
-
-
 </head>
+
 
 <body>
   <div class="container">
-    <div class="jumbotron bg-success text-light text-center py-3">
-      <h1 class="display-4"><i class="fas fa-headset"></i> Sistema de Controle de Atendimento</h1>
-    </div>
-    <div id="mensagem-remocao" class="alert alert-success mt-3" style="display: block;"></div>
-    <h2>Fila</h2>
-    <p>Adicione pessoas na fila:</p>
-    <div class="form-group">
-      <label for="txtnovoNome">Nome:</label>
-      <br />
-      <input type="text" class="form-control" id="txtnovoNome" placeholder="Digite o nome da pessoa" />
-      <br />
-      <label for="txtCpf">CPF:</label>
-      <input type="text" class="form-control" id="Cpf" placeholder="Digite o CPF" />
-      <br />
-      <button class="btn btn-primary" onclick="adicionarElemento()">Adicionar à fila</button>
-      <button class="btn btn-success" onclick="removerElemento()">Atender</button>
-      <button class="btn btn-warning" onclick="buscarElemento()">Buscar</button>
-      <button class="btn btn-info" onclick="abrirPainel()">Mostrar Painel</button>
 
+    <div class="sticky-top bg-white pt-3 pb-3 shadow-sm border-bottom" style="z-index: 1020;">
 
-      <br />
-      <br />
-    </div>
-    <h2 id="lblPessoasFila">Dados da Fila</h2>
-    <ul id="listFila"></ul>
-    <footer class="footer bg-success text-light text-center mt-5 py-3">
-      <div class="container text-center">
-        <span class="text-light">Desenvolvido por IFSULDEMINAS - Campus Machado <i class="fas fa-heart"></i></span>
+      <div class="jumbotron bg-success text-light text-center py-3 rounded">
+        <h1 class="display-5"><i class="fas fa-headset"></i> Sistema de Atendimento</h1>
       </div>
-    </footer>
-  </div>
+
+      <div id="mensagem-remocao" class="alert alert-danger mt-3 text-center shadow-lg border-danger"
+        style="display: none;"></div>
+
+      <div class="form-group mt-3">
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <label for="txtnovoNome" class="fw-bold">Nome:</label>
+            <input type="text" class="form-control" id="txtnovoNome" placeholder="Digite o nome" />
+          </div>
+          <div class="col-md-4 mb-2">
+            <label for="Cpf" class="fw-bold">CPF:</label>
+            <input type="text" class="form-control" id="Cpf" placeholder="Digite o CPF" />
+          </div>
+          <div class="col-md-4 mb-2">
+            <label for="datanasc" class="fw-bold">Nascimento:</label>
+            <input type="date" class="form-control" id="datanasc" />
+          </div>
+        </div>
+
+
+
+        <div class="mt-3">
+          <button class="btn btn-primary" onclick="adicionarElemento()"><i class="fas fa-plus"></i> Adicionar</button>
+          <button class="btn btn-success" onclick="removerElemento()"><i class="fas fa-bullhorn"></i> Atender</button>
+          <button class="btn btn-warning" onclick="buscarElemento()"><i class="fas fa-search"></i> Buscar</button>
+          <button class="btn btn-info text-white" onclick="abrirPainel()"><i class="fas fa-desktop"></i> Mostrar
+            Painel</button>
+        </div>
+
+      </div>
+      <div class="mt-4">
+        <h3 class="text-danger d-flex align-items-center gap-2" id="lblPessoasFilaPriotitaria">
+          <img src="aposentadoria.png" alt="Ícone de prioridade" style="width: 32px; height: auto;" />
+          Fila Prioritária (60+)
+        </h3>
+        <ul id="listminhaFilaPrioritaria" class="list-group mb-4"></ul>
+
+        <h3 class="text-primary" id="lblPessoasFila"><i class="fas fa-users"></i> Fila Normal</h3>
+        <ul id="listFilaNormal" class="list-group"></ul>
+      </div>
+
+      <footer class="footer bg-success text-light text-center mt-5 py-3 rounded">
+        <div class="container text-center">
+          <span class="text-light">Desenvolvido por IFSULDEMINAS <i class="fas fa-heart text-danger"></i></span>
+        </div>
+      </footer>
+
+    </div>
+    <script src="model/Fila.js"></script>
+    <script src="model/Atendimento.js"></script>
+    <script src="utils/util.js"></script>
+    <script src="model/No.js"></script>
+    <script src="model/FilaEncadeada.js"></script>
+    <script src="controller/filaController.js"></script>
+
+
 </body>
 
 </html>

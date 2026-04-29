@@ -24,3 +24,5 @@ function calcularDiferencaHoras(hora1, hora2) {
     const segundos = diferencaSegundos % 60;
     return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
+
+// funçao para pegar 
